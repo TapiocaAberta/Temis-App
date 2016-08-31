@@ -2,7 +2,7 @@
 gradle*
 settings*
 .gradle
-.ideia/
+.idea/
 .build*
 /local.properties
 /.idea/workspace.xml
