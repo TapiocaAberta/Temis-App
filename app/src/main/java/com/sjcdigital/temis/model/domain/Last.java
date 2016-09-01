@@ -1,7 +1,9 @@
 package com.sjcdigital.temis.model.domain;
 
-/**
- * Created by bruno.oliveira on 31/08/2016.
- */
 public class Last {
+    private String href;
+
+    public String getHref() { return this.href; }
+
+    public void setHref(String href) { this.href = href; }
 }
