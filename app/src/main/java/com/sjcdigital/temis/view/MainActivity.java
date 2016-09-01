@@ -1,7 +1,9 @@
-package com.sjcdigital.temis;
+package com.sjcdigital.temis.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.sjcdigital.temis.R;
 
 public class MainActivity extends AppCompatActivity {
 
