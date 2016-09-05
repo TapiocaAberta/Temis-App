@@ -12,27 +12,8 @@ import butterknife.ButterKnife;
  */
 public class BaseActivity extends AppCompatActivity {
 
-    private static final String ACTIVITY_ID = "ACTIVITY_ID";
-    private static final AtomicLong NEXT_ID = new AtomicLong(0);
-
-    private long mActivityId;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-        mActivityId = savedInstanceState != null ?
-                savedInstanceState.getLong(ACTIVITY_ID) : NEXT_ID.getAndIncrement();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putLong(ACTIVITY_ID, mActivityId);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }
