@@ -1,26 +1,41 @@
 package com.sjcdigital.temis.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Laws {
+public class Laws implements Parcelable {
     @SerializedName("_embedded")
-    private Embedded embedded;
+    public Embedded embedded;
     @SerializedName("_links")
-    private Links links;
+    public Links links;
 
-    public Embedded getEmbedded() {
-        return embedded;
+    protected Laws(Parcel in) {
+        embedded = in.readParcelable(Embedded.class.getClassLoader());
+        links = in.readParcelable(Links.class.getClassLoader());
     }
 
-    public void setEmbedded(Embedded embedded) {
-        this.embedded = embedded;
+    public static final Creator<Laws> CREATOR = new Creator<Laws>() {
+        @Override
+        public Laws createFromParcel(Parcel in) {
+            return new Laws(in);
+        }
+
+        @Override
+        public Laws[] newArray(int size) {
+            return new Laws[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public Links getLinks() {
-        return links;
-    }
-
-    public void setLinks(Links links) {
-        this.links = links;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeParcelable(embedded, i);
+        parcel.writeParcelable(links, i);
     }
 }

@@ -3,6 +3,7 @@ package com.sjcdigital.temis.view.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.sjcdigital.temis.R;
@@ -81,6 +83,13 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AldermanVi
         public void onClick(View view) {
 
             Author author = mAuthors.get(getAdapterPosition());
+
+            if (author.notFound){
+                Toast.makeText(context,context.getString(R.string._not_found),Toast.LENGTH_SHORT).show();
+                Snackbar.make(view,context.getString(R.string._not_found),Snackbar.LENGTH_SHORT).show();
+                return;
+            }
+
             Intent intent = new Intent(context, AuthorDetailActivity.class);
             intent.putExtra("pAuthor",author);
             context.startActivity(intent);
@@ -89,7 +98,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AldermanVi
     }
 
     protected void loadImage(String imgUrl, ImageView ivProfile) {
-        if (imgUrl != null && !imgUrl.isEmpty()) {
+        if (!TextUtils.isEmpty(imgUrl)) {
             Glide.with(context)
                     .load(imgUrl)
                     .crossFade()

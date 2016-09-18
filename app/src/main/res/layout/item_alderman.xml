@@ -29,7 +29,8 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivPhoto"
                     android:layout_width="@dimen/avatar_size"
-                    android:layout_height="@dimen/avatar_size" />
+                    android:layout_height="@dimen/avatar_size"
+                    android:scaleType="centerCrop"/>
 
             </RelativeLayout>
 

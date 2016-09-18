@@ -1,60 +1,51 @@
 package com.sjcdigital.temis.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class LawList {
-    private String code;
-    private ArrayList<Author> author;
-    private String desc;
-    private String date;
-    private String title;
-    private String projectLawNumber;
+public class LawList implements Parcelable {
+    public String code;
+    public ArrayList<Author> author;
+    public String desc;
+    public String date;
+    public String title;
+    public String projectLawNumber;
 
-    public String getCode() {
-        return this.code;
+    protected LawList(Parcel in) {
+        this.code = in.readString();
+        this.desc = in.readString();
+        this.date = in.readString();
+        this.title = in.readString();
+        this.projectLawNumber = in.readString();
+        this.author = in.readArrayList(Author.class.getClassLoader());
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public static final Creator<LawList> CREATOR = new Creator<LawList>() {
+        @Override
+        public LawList createFromParcel(Parcel in) {
+            return new LawList(in);
+        }
+
+        @Override
+        public LawList[] newArray(int size) {
+            return new LawList[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public ArrayList<Author> getAuthor() {
-        return this.author;
-    }
-
-    public void setAuthor(ArrayList<Author> author) {
-        this.author = author;
-    }
-
-    public String getDesc() {
-        return this.desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDate() {
-        return this.date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getProjectLawNumber() {
-        return this.projectLawNumber;
-    }
-
-    public void setProjectLawNumber(String projectLawNumber) {
-        this.projectLawNumber = projectLawNumber;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.code);
+        parcel.writeString(this.desc);
+        parcel.writeString(this.date);
+        parcel.writeString(this.title);
+        parcel.writeString(this.projectLawNumber);
+        parcel.writeList(this.author);
     }
 }

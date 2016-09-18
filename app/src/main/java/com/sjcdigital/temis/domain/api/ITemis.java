@@ -1,6 +1,8 @@
 package com.sjcdigital.temis.domain.api;
 
 import com.sjcdigital.temis.domain.model.Author;
+import com.sjcdigital.temis.domain.model.Embedded;
+import com.sjcdigital.temis.domain.model.LawList;
 import com.sjcdigital.temis.domain.model.Laws;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public interface ITemis {
     Observable<List<Author>> findAldermans();
 
     @GET("laws/alderman/{name}")
-    Call<Laws> findAldermanLaws(@Path("name") final String name);
+    Observable<Laws> findAldermanLaws(@Path(value = "name", encoded = true)  final String name);
 
     @GET("laws/alderman/{name}")
     Call<Laws> findAldermanLawsPage(@Path("name") final String name, @Query("page") final Integer page);
