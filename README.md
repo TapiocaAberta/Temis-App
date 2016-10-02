@@ -7,5 +7,14 @@ Aplicativo android para "votar" nos projetos de leis dos vereadores de São Jos�
   <img src="https://github.com/brsanthiago/Temis-App/blob/master/screen/device-2016-09-18-014027.png" alt="Projetos do Vereador" width="150"/>
   <img src="https://github.com/brsanthiago/Temis-App/blob/master/screen/device-2016-09-18-014038.png" alt="Detalhes do Projeto" width="150"/>
 </p>
+
+
+Estrutura do Projeto
+
+Java 8;
+Retrofit;
+RxAndroid
+Glide;
+
 ##Saiba mais sobre Têmis em:
 https://github.com/pedro-hos/temis
