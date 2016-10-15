@@ -18,4 +18,4 @@ Aplicativo android para "votar" nos projetos de leis dos vereadores de São Jos�
 
 
 ##Saiba mais sobre Têmis em:
-https://github.com/pedro-hos/temis
+https://github.com/sjcdigital/temis-api
