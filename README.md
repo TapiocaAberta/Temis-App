@@ -9,11 +9,11 @@ Aplicativo android para "votar" nos projetos de leis dos vereadores de S√£o Jos√
 </p>
 
 
-<p><b>Estrutura do Projeto</b><p>
-<p><b>Java 8;</b></p>
-<p><b>Retrofit;</b></p>
-<p><b>RxAndroid;</b></p>
-<p><b>Glide;</b></p>
+#Estrutura do Projeto
+* Java 8;
+* Retrofit;
+* RxAndroid;
+* Glide;
 
 
 
