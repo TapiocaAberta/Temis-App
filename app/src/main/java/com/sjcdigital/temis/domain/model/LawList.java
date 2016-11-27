@@ -38,7 +38,6 @@ public class LawList implements Serializable {
     private int votesCount;
     @DatabaseField
     private int rating;
-    @Expose
     @DatabaseField(foreign = true)
     @SerializedName("mAuthor")
     private Author author;
