@@ -39,11 +39,11 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AldermanVi
         Author author = mAuthors.get(position);
 
         if (author != null) {
-            holder.tvName.setText(author.name);
-            holder.tvPartido.setText(author.politicalParty);
-            holder.tvLegislature.setText(author.legislature);
-            if (!TextUtils.isEmpty(author.photo)) {
-                loadImage(author.photo, holder.ivPhoto);
+            holder.tvName.setText(author.getName());
+            holder.tvPartido.setText(author.getPoliticalParty());
+            holder.tvLegislature.setText(author.getLegislature());
+            if (!TextUtils.isEmpty(author.getPhoto())) {
+                loadImage(author.getPhoto(), holder.ivPhoto);
             } else {
                 holder.ivPhoto.setImageResource(R.drawable.sjc_digital);
             }
@@ -84,7 +84,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AldermanVi
 
             Author author = mAuthors.get(getAdapterPosition());
 
-            if (author.notFound){
+            if (author.isNotFound()){
                 Toast.makeText(context,context.getString(R.string._not_found),Toast.LENGTH_SHORT).show();
                 Snackbar.make(view,context.getString(R.string._not_found),Snackbar.LENGTH_SHORT).show();
                 return;

@@ -1,12 +1,17 @@
 package com.sjcdigital.temis.presenter;
 
+import com.google.gson.Gson;
+import com.sjcdigital.temis.domain.model.Author;
 import com.sjcdigital.temis.domain.model.LawList;
 import com.sjcdigital.temis.domain.service.LawsService;
 
 import java.util.List;
 
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 /**
- * Created by bruno.oliveira on 17/09/2016.
+ * Created by bruno.santiago on 17/09/2016.
  */
 public class LawsPresenter implements LawsContract.Presenter {
 
@@ -25,10 +30,20 @@ public class LawsPresenter implements LawsContract.Presenter {
     }
 
     @Override
-    public void loadLaws(final String authorName) {
+    public void loadLaws(final Author author) {
         view.showLoadingLayout();
-        service.getLaws(authorName).subscribe(aggregations -> {
+        this.lawAggregation = service.laws(author);
+        if (lawAggregation.isEmpty()) {
+            apiConsume(author);
+        } else {
+            refreshUi();
+        }
+    }
+    public void apiConsume(final Author author) {
+        view.showLoadingLayout();
+        service.getLaws(author).subscribe(aggregations -> {
             this.lawAggregation = aggregations.embedded.lawList;
+            service.save(lawAggregation,author);
             refreshUi();
         }, throwable -> {
             view.showErrorLayout();
@@ -47,7 +62,7 @@ public class LawsPresenter implements LawsContract.Presenter {
     }
 
     @Override
-    public void retryLaws(final String authorName) {
+    public void retryLaws(final Author authorName) {
         loadLaws(authorName);
     }
 

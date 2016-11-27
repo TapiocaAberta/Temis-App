@@ -2,6 +2,7 @@ package com.sjcdigital.temis.view.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.util.concurrent.atomic.AtomicLong;
 

@@ -49,19 +49,19 @@ public class AuthorDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        author = getIntent().getExtras().getParcelable("pAuthor");
+        author = (Author) getIntent().getExtras().getSerializable("pAuthor");
         if (author != null) {
-            toolbar.setTitle(author.name);
+            toolbar.setTitle(author.getName());
 
-            tvInfo.setText(author.info);
-            tvEmail.setText(author.email);
-            tvPhone.setText(author.phone);
-            tvLegislature.setText(author.legislature);
-            tvPartido.setText(author.politicalParty);
-            tvWorkspace.setText(author.workplace);
+            tvInfo.setText(author.getInfo());
+            tvEmail.setText(author.getEmail());
+            tvPhone.setText(author.getPhone());
+            tvLegislature.setText(author.getLegislature());
+            tvPartido.setText(author.getPoliticalParty());
+            tvWorkspace.setText(author.getWorkplace());
 
             Glide.with(this)
-                    .load(author.photo)
+                    .load(author.getPhoto())
                     .crossFade()
                     .into(ivPhoto);
         }
@@ -71,7 +71,9 @@ public class AuthorDetailActivity extends AppCompatActivity {
     @OnClick(R.id.fab)
     void openLaws() {
         Intent intent = new Intent(this, LawsActivity.class);
-        intent.putExtra("authorName",author.name);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("author",author);
+        intent.putExtra("authorName",bundle);
         startActivity(intent);
     }
 }

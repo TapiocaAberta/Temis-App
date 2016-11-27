@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sjcdigital.temis.R;
@@ -20,12 +21,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by bruno.oliveira on 17/09/2016.
+ * Created by bruno.santiago on 17/09/2016.
  */
 public class LawsAdapter extends RecyclerView.Adapter<LawsAdapter.LawViewHolder> {
 
     private List<LawList> lawsList = new ArrayList<>();
     private Context context;
+
 
     public LawsAdapter(Context context, List<LawList> lawsList) {
         this.lawsList = lawsList;
@@ -43,16 +45,19 @@ public class LawsAdapter extends RecyclerView.Adapter<LawsAdapter.LawViewHolder>
     public void onBindViewHolder(LawViewHolder holder, int position) {
         LawList laws = lawsList.get(position);
         if (laws != null) {
-            String title;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                title = Html.fromHtml(laws.title, Html.FROM_HTML_MODE_LEGACY).toString();
-            } else {
-                title = Html.fromHtml(laws.title).toString();
-            }
+            String title = laws.getSummary();
+
+            if (title != null)
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    title = Html.fromHtml(title, Html.FROM_HTML_MODE_LEGACY).toString();
+                } else {
+                    title = Html.fromHtml(title).toString();
+                }
 
             holder.tvTitle.setText(title);
-            holder.tvData.setText(laws.date);
-            holder.tvLawNumber.setText(" " + laws.projectLawNumber);
+            holder.tvData.setText(laws.getDate());
+            holder.tvTag.setText(laws.getType());
+           holder.tvAuthor.setText(laws.getmAuthor().getName());
         }
     }
 
@@ -65,13 +70,14 @@ public class LawsAdapter extends RecyclerView.Adapter<LawsAdapter.LawViewHolder>
     }
 
     public class LawViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         @BindView(R.id.tvTitle)
         TextView tvTitle;
         @BindView(R.id.tvData)
         TextView tvData;
-        @BindView(R.id.tvLawNumber)
-        TextView tvLawNumber;
+        @BindView(R.id.tvTag)
+        TextView tvTag;
+        @BindView(R.id.tvAuthor)
+        TextView tvAuthor;
 
         public LawViewHolder(View view) {
             super(view);

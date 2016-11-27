@@ -7,18 +7,20 @@
     <application
         android:name=".TemisApp"
         android:allowBackup="true"
-        android:icon="@drawable/sjcdigital"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LawsActivity"></activity>
+        <activity android:name=".view.LawsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".view.AuthorDetailActivity"
             android:label="@string/title_activity_author_detail"
@@ -27,6 +29,16 @@
             android:name=".view.LawDetailActivity"
             android:label="@string/title_activity_author_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <receiver android:name=".domain.receiver.TemisReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".domain.receiver.TemisReceptor">
+        </receiver>
+
     </application>
 
 </manifest>

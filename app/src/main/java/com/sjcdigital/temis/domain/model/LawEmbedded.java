@@ -3,27 +3,24 @@ package com.sjcdigital.temis.domain.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 
-public class Embedded implements Parcelable{
-    @SerializedName("lawList")
+public class LawEmbedded implements Parcelable {
     public ArrayList<LawList> lawList;
 
-    protected Embedded(Parcel in) {
+    protected LawEmbedded(Parcel in) {
         this.lawList = in.readArrayList(LawList.class.getClassLoader());
     }
 
-    public static final Creator<Embedded> CREATOR = new Creator<Embedded>() {
+    public static final Creator<LawEmbedded> CREATOR = new Creator<LawEmbedded>() {
         @Override
-        public Embedded createFromParcel(Parcel in) {
-            return new Embedded(in);
+        public LawEmbedded createFromParcel(Parcel in) {
+            return new LawEmbedded(in);
         }
 
         @Override
-        public Embedded[] newArray(int size) {
-            return new Embedded[size];
+        public LawEmbedded[] newArray(int size) {
+            return new LawEmbedded[size];
         }
     };
 

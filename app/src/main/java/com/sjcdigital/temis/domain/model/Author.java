@@ -1,67 +1,113 @@
 package com.sjcdigital.temis.domain.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class Author implements Parcelable {
-    public String id;
-    public String name;
-    public String politicalParty;
-    public String info;
-    public String email;
-    public String legislature;
-    public String workplace;
-    public String photo;
-    public String phone;
-    public boolean notFound;
-    public ArrayList<Links> links;
+@DatabaseTable(tableName = "author")
+public class Author implements Serializable {
+    @DatabaseField(id = true)
+    private String id;
+    @DatabaseField
+    private String name;
+    @DatabaseField
+    private String politicalParty;
+    @DatabaseField
+    private String info;
+    @DatabaseField
+    private String email;
+    @DatabaseField
+    private String legislature;
+    @DatabaseField
+    private String workplace;
+    @DatabaseField
+    private String photo;
+    @DatabaseField
+    private String phone;
+    @DatabaseField
+    private boolean notFound;
 
-    protected Author(Parcel in) {
-        this.id = in.readString();
-        this.name = in.readString();
-        this.politicalParty = in.readString();
-        this.info = in.readString();
-        this.email = in.readString();
-        this.legislature = in.readString();
-        this.workplace = in.readString();
-        this.photo = in.readString();
-        this.phone = in.readString();
-        this.notFound = in.readByte() != 0;
-        this.links = in.readArrayList(Links.class.getClassLoader());
+    private Author() {
     }
 
-    public static final Creator<Author> CREATOR = new Creator<Author>() {
-        @Override
-        public Author createFromParcel(Parcel in) {
-            return new Author(in);
-        }
-
-        @Override
-        public Author[] newArray(int size) {
-            return new Author[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.id);
-        dest.writeString(this.name);
-        dest.writeString(this.politicalParty);
-        dest.writeString(this.info);
-        dest.writeString(this.email);
-        dest.writeString(this.legislature);
-        dest.writeString(this.workplace);
-        dest.writeString(this.photo);
-        dest.writeString(this.phone);
-        dest.writeByte((byte) (this.notFound ? 1 : 0));
-        dest.writeList(this.links);
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPoliticalParty() {
+        return politicalParty;
+    }
+
+    public void setPoliticalParty(String politicalParty) {
+        this.politicalParty = politicalParty;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLegislature() {
+        return legislature;
+    }
+
+    public void setLegislature(String legislature) {
+        this.legislature = legislature;
+    }
+
+    public String getWorkplace() {
+        return workplace;
+    }
+
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public boolean isNotFound() {
+        return notFound;
+    }
+
+    public void setNotFound(boolean notFound) {
+        this.notFound = notFound;
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sjcdigital.temis.R;
@@ -25,6 +26,11 @@ public class LawDetailActivity extends AppCompatActivity {
     TextView tvContent;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    /*@BindView(R.id.ivLike)
+    ImageButton ivLike;
+    @BindView(R.id.ivNoLike)
+    ImageButton ivNoLike;*/
+
     private LawList law;
 
     @Override
@@ -39,19 +45,19 @@ public class LawDetailActivity extends AppCompatActivity {
     }
 
     protected void initialize() {
-        law = getIntent().getExtras().getParcelable("law");
+        law = (LawList) getIntent().getExtras().getSerializable("law");
         if (law != null) {
-            toolbar.setTitle(law.author.get(0).name);
+            toolbar.setTitle("LEIS");
 
-            tvLawNumber.setText(getString(R.string._law_number_field)+" "+law.projectLawNumber);
-            tvData.setText(getString(R.string._data_field)+" "+law.date);
-            tvTitle.setText(law.title);
+            tvLawNumber.setText(getString(R.string._law_number_field)+" "+law.getProjectLawNumber());
+            tvData.setText(getString(R.string._data_field)+" "+law.getDate());
+            tvTitle.setText(law.getTitle());
 
             String content;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                content = Html.fromHtml(law.desc, Html.FROM_HTML_MODE_LEGACY).toString();
+                content = Html.fromHtml(law.getDesc(), Html.FROM_HTML_MODE_LEGACY).toString();
             } else {
-                content = Html.fromHtml(law.desc).toString();
+                content = Html.fromHtml(law.getDesc()).toString();
             }
             tvContent.setText(content);
         }

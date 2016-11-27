@@ -1,38 +1,34 @@
 package com.sjcdigital.temis.domain.api;
 
-import com.sjcdigital.temis.domain.model.Author;
-import com.sjcdigital.temis.domain.model.Embedded;
-import com.sjcdigital.temis.domain.model.LawList;
-import com.sjcdigital.temis.domain.model.Laws;
-
-import java.util.List;
+import com.sjcdigital.temis.domain.model.Alderman;
+import com.sjcdigital.temis.domain.model.Law;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 import rx.Observable;
 
 public interface ITemis {
 
-    @GET("laws")
-    Call<Laws> findLaws();
-
-    @GET("laws")
-    Call<Laws> findPageLaw(@Query("page") final Integer page);
-
-    @GET("laws")
-    Call<Laws> findPageSizeLaw(@Query("page") final Integer page, @Query("size") final Integer size);
+    @GET("alderman")
+    Observable<Alderman> findAldermans();
 
     @GET("alderman")
-    Observable<List<Author>> findAldermans();
+    Observable<Alderman> findNextAldermans(@Query("page") final int page, @Query("size") final int size);
 
-    @GET("laws/alderman/{name}")
-    Observable<Laws> findAldermanLaws(@Path(value = "name", encoded = true)  final String name);
+    @GET("alderman/{name}/law")
+    Observable<Law> findAldermanLaws(@Path(value = "name", encoded = true) final String name,@Query("page") final int page, @Query("size") final int size);
 
-    @GET("laws/alderman/{name}")
-    Call<Laws> findAldermanLawsPage(@Path("name") final String name, @Query("page") final Integer page);
+    @GET
+    Observable<Alderman> findNextLaws(@Url String url);
 
-    @GET("laws/alderman/{name}")
-    Call<Laws> findldermanLawsPageSize(@Path("name") final String name, @Query("page") final Integer page, @Query("size") final Integer size);
+    @PUT("laws/{code}/vote/yes")
+    Call<Law> voteYes(@Path("code") final String code);
+
+
+    @PUT("laws/{code}/vote/no")
+    Call<Law> voteNo(@Path("code") final String code);
 }

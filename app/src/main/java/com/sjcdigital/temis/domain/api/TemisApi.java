@@ -19,7 +19,6 @@ public class TemisApi {
     private static final String BASE_URL = "http://temis-server.herokuapp.com/api/";
 
     private static Retrofit retrofit;
-    ;
 
     private static Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")

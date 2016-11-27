@@ -1,12 +1,12 @@
 package com.sjcdigital.temis.presenter;
 
+import com.sjcdigital.temis.domain.model.Author;
 import com.sjcdigital.temis.domain.model.LawList;
-import com.sjcdigital.temis.domain.model.Laws;
 
 import java.util.List;
 
 /**
- * Created by bruno.oliveira on 17/09/2016.
+ * Created by bruno.santiago on 17/09/2016.
  */
 public interface LawsContract {
     interface View {
@@ -24,11 +24,11 @@ public interface LawsContract {
     interface Presenter {
         List<LawList> onSaveInstanceState();
 
-        void loadLaws(final String authorName);
+        void loadLaws(final Author authorName);
 
         void refreshUi();
 
-        void retryLaws(final String authorName);
+        void retryLaws(final Author authorName);
 
         void onLoadInstanceState(List<LawList> aggregation);
 
