@@ -60,8 +60,7 @@ public class AuthorDetailActivity extends BaseActivity {
     }
 
     public void initialize(){
-        if (author != null) {
-
+        if (!author.isNotFound()) {
             tvInfo.setText(author.getInfo());
             tvEmail.setText(author.getEmail());
             tvPhone.setText(author.getPhone());

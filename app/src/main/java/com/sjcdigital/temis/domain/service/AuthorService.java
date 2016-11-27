@@ -24,6 +24,10 @@ public class AuthorService implements Observable.Transformer<Alderman, Alderman>
         this.repository = AuthorRepository.getInstance(context);
     }
 
+    public Author getAuthor(final String id) {
+        return repository.findById(id);
+    }
+
     public void save(final List<Author> authors) {
         repository.saveList(authors);
     }
@@ -36,8 +40,9 @@ public class AuthorService implements Observable.Transformer<Alderman, Alderman>
     public Observable<Alderman> totalPage() {
         return iTemis.findAldermans().compose(this);
     }
+
     public Observable<Alderman> getAldermains(final int page, final int size) {
-        return iTemis.findNextAldermans(page,size).compose(this);
+        return iTemis.findNextAldermans(page, size).compose(this);
     }
 
     @Override

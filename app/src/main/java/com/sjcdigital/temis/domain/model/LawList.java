@@ -49,87 +49,47 @@ public class LawList implements Serializable {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public List<Author> getAuthors() {
         return authors;
-    }
-
-    public void setAuthors(ArrayList<Author> author) {
-        this.authors = author;
     }
 
     public String getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getProjectLawNumber() {
         return projectLawNumber;
-    }
-
-    public void setProjectLawNumber(String projectLawNumber) {
-        this.projectLawNumber = projectLawNumber;
     }
 
     public int getVotesCount() {
         return votesCount;
     }
 
-    public void setVotesCount(int votesCount) {
-        this.votesCount = votesCount;
-    }
-
     public int getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public Author getmAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setmAuthor(Author mAuthor) {
-        this.author = mAuthor;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }

@@ -83,13 +83,6 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AldermanVi
         public void onClick(View view) {
 
             Author author = mAuthors.get(getAdapterPosition());
-
-            if (author.isNotFound()){
-                Toast.makeText(context,context.getString(R.string._not_found),Toast.LENGTH_SHORT).show();
-                Snackbar.make(view,context.getString(R.string._not_found),Snackbar.LENGTH_SHORT).show();
-                return;
-            }
-
             Intent intent = new Intent(context, AuthorDetailActivity.class);
             intent.putExtra("pAuthor",author);
             context.startActivity(intent);

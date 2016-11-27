@@ -7,11 +7,12 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sjcdigital.temis.R;
+import com.sjcdigital.temis.domain.model.Author;
 import com.sjcdigital.temis.domain.model.LawList;
+import com.sjcdigital.temis.domain.service.AuthorService;
 import com.sjcdigital.temis.view.LawDetailActivity;
 
 import java.util.ArrayList;
@@ -27,11 +28,13 @@ public class LawsAdapter extends RecyclerView.Adapter<LawsAdapter.LawViewHolder>
 
     private List<LawList> lawsList = new ArrayList<>();
     private Context context;
+    private AuthorService authorService;
 
 
-    public LawsAdapter(Context context, List<LawList> lawsList) {
+    public LawsAdapter(Context context, List<LawList> lawsList, final AuthorService authorService) {
         this.lawsList = lawsList;
         this.context = context;
+        this.authorService = authorService;
     }
 
     @Override
@@ -57,7 +60,10 @@ public class LawsAdapter extends RecyclerView.Adapter<LawsAdapter.LawViewHolder>
             holder.tvTitle.setText(title);
             holder.tvData.setText(laws.getDate());
             holder.tvTag.setText(laws.getType());
-           holder.tvAuthor.setText(laws.getmAuthor().getName());
+
+            final Author author = authorService.getAuthor(laws.getAuthor().getId());
+            if (author != null)
+                holder.tvAuthor.setText(author.getName());
         }
     }
 

@@ -44,7 +44,7 @@ public abstract class GenericDao<E> extends DatabaseHelper<E> {
 
     public List<E> findByAuthor(final Author author) {
         try {
-            List<E> result = dao.queryForEq("author_id",author);
+            List<E> result = dao.queryForEq("author_id", author);
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,6 +60,17 @@ public abstract class GenericDao<E> extends DatabaseHelper<E> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public E findById(final String id) {
+        try {
+            List<E> obj = dao.queryForEq("id", id);
+            if (!obj.isEmpty())
+                return obj.get(0);
+        } catch (Exception e) {
+            return null;
+        }
+        return null;
     }
 
     public void saveOrUpdate(E obj) {

@@ -30,7 +30,7 @@ public class LawRepository extends GenericDao<LawList> {
 
     public void saveList(final List<LawList> lawLists, final Author author){
         for (LawList law: lawLists) {
-            law.setmAuthor(author);
+            law.setAuthor(author);
             saveOrUpdate(law);
         }
     }

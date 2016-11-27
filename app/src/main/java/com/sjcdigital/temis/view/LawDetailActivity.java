@@ -17,17 +17,12 @@ import butterknife.ButterKnife;
 
 public class LawDetailActivity extends BaseActivity {
 
-    @BindView(R.id.tvLawNumber)
-    TextView tvLawNumber;
-    @BindView(R.id.tvData)
-    TextView tvData;
     @BindView(R.id.tvTitle)
     TextView tvTitle;
     @BindView(R.id.tvContent)
     TextView tvContent;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
     private LawList law;
 
     @Override
@@ -40,7 +35,7 @@ public class LawDetailActivity extends BaseActivity {
         initialize();
     }
     protected void setToolbar() {
-        toolbar.setTitle(getString(R.string._law_number_field)+" "+law.getProjectLawNumber());
+        toolbar.setTitle(getString(R.string._law_number_field));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -48,9 +43,6 @@ public class LawDetailActivity extends BaseActivity {
 
     protected void initialize() {
         if (law != null) {
-
-            tvLawNumber.setText(getString(R.string._law_number_field)+" "+law.getProjectLawNumber());
-            tvData.setText(getString(R.string._data_field)+" "+law.getDate());
             tvTitle.setText(law.getTitle());
 
             String content;

@@ -21,28 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_avg" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tvLawNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size_pref" />
-
-            <TextView
-                android:id="@+id/tvData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size_pref" />
-
-        </RelativeLayout>
-
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"

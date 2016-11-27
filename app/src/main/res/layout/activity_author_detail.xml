@@ -17,20 +17,20 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
                 android:id="@+id/ivPhoto"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/politico_sem_foto"
-
+                android:scaleType="fitXY"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.8"/>
+                app:layout_collapseParallaxMultiplier="0.8"
+                android:src="@drawable/politico_sem_foto"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

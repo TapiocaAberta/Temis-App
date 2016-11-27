@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                
+                android:text="@string/_not_found"
                 android:layout_toEndOf="@id/ivContact"
                 android:layout_toRightOf="@id/ivContact"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -60,6 +60,7 @@
                 android:layout_toRightOf="@id/ivEmail"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:text="@string/_not_found"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#212121" />
         </RelativeLayout>
@@ -84,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/ivPhone"
                 android:layout_toRightOf="@id/ivPhone"
+                android:text="@string/_not_found"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -110,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/ivPartido"
                 android:layout_toRightOf="@id/ivPartido"
+                android:text="@string/_not_found"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -137,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/ivLegislature"
                 android:layout_toRightOf="@id/ivLegislature"
+                android:text="@string/_not_found"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -165,6 +169,7 @@
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_toEndOf="@id/ivWorkspace"
                 android:layout_toRightOf="@id/ivWorkspace"
+                android:text="@string/_not_found"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#212121" />
         </RelativeLayout>

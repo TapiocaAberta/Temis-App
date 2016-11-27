@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.sjcdigital.temis.R;
 import com.sjcdigital.temis.domain.model.Author;
 import com.sjcdigital.temis.domain.model.LawList;
+import com.sjcdigital.temis.domain.service.AuthorService;
 import com.sjcdigital.temis.domain.service.LawsService;
 import com.sjcdigital.temis.presenter.LawsContract;
 import com.sjcdigital.temis.presenter.LawsPresenter;
@@ -100,8 +101,9 @@ public class LawsActivity extends BaseActivity implements LawsContract.View, Vie
 
     @Override
     public void setupLaws(List<LawList> laws) {
+        final AuthorService authorService = new AuthorService(this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
-        LawsAdapter lawsAdapter = new LawsAdapter(this, laws);
+        LawsAdapter lawsAdapter = new LawsAdapter(this, laws,authorService);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(lawsAdapter);
     }
@@ -112,6 +114,7 @@ public class LawsActivity extends BaseActivity implements LawsContract.View, Vie
         errorContainer.setVisibility(View.GONE);
         loadingContainer.setVisibility(View.VISIBLE);
         emptyContainer.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
     }
 
     @Override
@@ -120,6 +123,7 @@ public class LawsActivity extends BaseActivity implements LawsContract.View, Vie
         errorContainer.setVisibility(View.VISIBLE);
         loadingContainer.setVisibility(View.GONE);
         emptyContainer.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
     }
 
     @Override
@@ -128,6 +132,7 @@ public class LawsActivity extends BaseActivity implements LawsContract.View, Vie
         errorContainer.setVisibility(View.GONE);
         loadingContainer.setVisibility(View.GONE);
         emptyContainer.setVisibility(View.GONE);
+        fab.setVisibility(View.VISIBLE);
     }
 
     @Override
