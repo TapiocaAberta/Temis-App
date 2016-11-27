@@ -2,6 +2,7 @@ package com.sjcdigital.temis.domain.api;
 
 import com.sjcdigital.temis.domain.model.Alderman;
 import com.sjcdigital.temis.domain.model.Law;
+import com.sjcdigital.temis.domain.model.LawList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -25,10 +26,7 @@ public interface ITemis {
     @GET
     Observable<Alderman> findNextLaws(@Url String url);
 
-    @PUT("laws/{code}/vote/yes")
-    Call<Law> voteYes(@Path("code") final String code);
+    @PUT("laws/{code}/vote")
+    Call<LawList> vote(@Path("code") final String lawCode,@Query("rating") final int page);
 
-
-    @PUT("laws/{code}/vote/no")
-    Call<Law> voteNo(@Path("code") final String code);
 }

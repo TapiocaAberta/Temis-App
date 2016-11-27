@@ -1,19 +1,27 @@
 package com.sjcdigital.temis.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.sjcdigital.temis.R;
+import com.sjcdigital.temis.domain.api.ITemis;
+import com.sjcdigital.temis.domain.api.TemisApi;
+import com.sjcdigital.temis.domain.model.Author;
 import com.sjcdigital.temis.domain.model.LawList;
+import com.sjcdigital.temis.domain.service.LawsService;
 import com.sjcdigital.temis.view.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LawDetailActivity extends BaseActivity {
 
@@ -23,7 +31,11 @@ public class LawDetailActivity extends BaseActivity {
     TextView tvContent;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.ratingBar)
+    RatingBar ratingBar;
     private LawList law;
+    private LawsService lawsService;
+    private ITemis iTemis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +45,15 @@ public class LawDetailActivity extends BaseActivity {
         law = (LawList) getIntent().getExtras().getSerializable("law");
         setToolbar();
         initialize();
+        lawsService = new LawsService(this);
+        iTemis = TemisApi.getRetrofit().create(ITemis.class);
+
+        ratingBar.setOnRatingBarChangeListener((bar, rating, fromUser) -> {
+            //avaliacao((int)rating);
+        });
+
     }
+
     protected void setToolbar() {
         toolbar.setTitle(getString(R.string._law_number_field));
         setSupportActionBar(toolbar);
@@ -52,6 +72,7 @@ public class LawDetailActivity extends BaseActivity {
                 content = Html.fromHtml(law.getDesc()).toString();
             }
             tvContent.setText(content);
+            ratingBar.setRating(law.getRating());
         }
     }
 

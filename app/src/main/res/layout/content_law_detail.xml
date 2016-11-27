@@ -55,7 +55,28 @@
                 android:id="@+id/tvContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_margin"/>
+                android:layout_marginTop="@dimen/text_margin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:textStyle="bold"
+                android:text="@string/opniao" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_horizontal" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_avg" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

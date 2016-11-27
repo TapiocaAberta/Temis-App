@@ -10,4 +10,7 @@
     <string name="_num_like">1000</string>
     <string name="monitor_legislativo">MONITOR LEGISLATIVO</string>
     <string name="projeto_leis">Projetos de Leis</string>
+    <string name="opniao">Você acha que esse projeto de lei é útil?</string>
+    <string name="ok">OK</string>
+    <string name="votado">Você já votou nessa Lei!</string>
 </resources>

@@ -37,6 +37,12 @@ public class LawsService implements Observable.Transformer<Law, Law> {
     public void save(final List<LawList> laws, final Author author) {
         repository.saveList(laws,author);
     }
+    public void update(final LawList laws) {
+        repository.saveOrUpdate(laws);
+    }
+    public LawList getLaw(final LawList laws) {
+       return repository.findById(laws.getCode());
+    }
 
     public Observable<Law> getLaws(final Author author) {
         return iTemis.findAldermanLaws(author.getName(),PAGE,TOTAL).compose(this);
