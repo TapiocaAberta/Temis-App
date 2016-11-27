@@ -13,12 +13,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.sjcdigital.temis.R;
 import com.sjcdigital.temis.domain.model.Author;
+import com.sjcdigital.temis.view.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AuthorDetailActivity extends AppCompatActivity {
+public class AuthorDetailActivity extends BaseActivity {
 
     @BindView(R.id.ivPhoto)
     ImageView ivPhoto;
@@ -42,16 +43,24 @@ public class AuthorDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_author_detail);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
-
         author = (Author) getIntent().getExtras().getSerializable("pAuthor");
+        setToolbar();
+        initialize();
+
+    }
+
+    protected void setToolbar() {
+        toolbar.setTitle(author.getName());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void initialize(){
         if (author != null) {
-            toolbar.setTitle(author.getName());
 
             tvInfo.setText(author.getInfo());
             tvEmail.setText(author.getEmail());
@@ -65,7 +74,6 @@ public class AuthorDetailActivity extends AppCompatActivity {
                     .crossFade()
                     .into(ivPhoto);
         }
-
     }
 
     @OnClick(R.id.fab)

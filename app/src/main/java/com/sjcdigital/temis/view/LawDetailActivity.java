@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.sjcdigital.temis.R;
 import com.sjcdigital.temis.domain.model.LawList;
+import com.sjcdigital.temis.view.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LawDetailActivity extends AppCompatActivity {
+public class LawDetailActivity extends BaseActivity {
 
     @BindView(R.id.tvLawNumber)
     TextView tvLawNumber;
@@ -26,28 +27,27 @@ public class LawDetailActivity extends AppCompatActivity {
     TextView tvContent;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    /*@BindView(R.id.ivLike)
-    ImageButton ivLike;
-    @BindView(R.id.ivNoLike)
-    ImageButton ivNoLike;*/
 
     private LawList law;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_law_detail);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+        law = (LawList) getIntent().getExtras().getSerializable("law");
+        setToolbar();
         initialize();
+    }
+    protected void setToolbar() {
+        toolbar.setTitle(getString(R.string._law_number_field)+" "+law.getProjectLawNumber());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     protected void initialize() {
-        law = (LawList) getIntent().getExtras().getSerializable("law");
         if (law != null) {
-            toolbar.setTitle("LEIS");
 
             tvLawNumber.setText(getString(R.string._law_number_field)+" "+law.getProjectLawNumber());
             tvData.setText(getString(R.string._data_field)+" "+law.getDate());

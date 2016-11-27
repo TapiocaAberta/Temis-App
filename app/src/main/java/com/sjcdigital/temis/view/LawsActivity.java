@@ -88,8 +88,8 @@ public class LawsActivity extends BaseActivity implements LawsContract.View, Vie
     protected void setToolbar() {
         toolbar.setTitle(R.string.projeto_leis);
         toolbar.setSubtitle(author.getName()    );
-        toolbar.setNavigationIcon(R.drawable.ic_alderman);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
